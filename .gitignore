@@ -1,0 +1,18 @@
+# Xcode
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcworkspace/contents.xcworkspacedata
+DerivedData/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xccheckout
+*.xcscmblueprint
+build/
+
+# Generated — recreate with `xcodegen generate`
+SitTracker.xcodeproj/
+
+# macOS
+.DS_Store

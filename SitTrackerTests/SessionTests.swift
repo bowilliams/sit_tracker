@@ -1,0 +1,79 @@
+import XCTest
+@testable import SitTracker
+
+final class SessionTests: XCTestCase {
+
+    // MARK: - Duration
+
+    func testDurationMinutes_completedSession() {
+        let start = Date()
+        let session = Session(startTime: start, type: .supported)
+        session.stopTime = start.addingTimeInterval(90 * 60) // 90 minutes
+        XCTAssertEqual(session.durationMinutes, 90, accuracy: 0.001)
+    }
+
+    func testDurationMinutes_activeSession_isApproximatelyZero() {
+        let session = Session(startTime: Date(), type: .supported)
+        // Active session uses Date() internally; duration should be near zero immediately after creation
+        XCTAssertLessThan(session.durationMinutes, 0.1)
+    }
+
+    // MARK: - Daily total per type
+
+    func testTotalMinutes_forType_sumsCorrectType() {
+        let base = Date()
+        let s1 = makeSession(start: base, minutes: 30, type: .supported)
+        let s2 = makeSession(start: base, minutes: 20, type: .supported)
+        let s3 = makeSession(start: base, minutes: 15, type: .legsElevated)
+
+        let sessions = [s1, s2, s3]
+        XCTAssertEqual(sessions.totalMinutes(for: .supported), 50, accuracy: 0.001)
+        XCTAssertEqual(sessions.totalMinutes(for: .legsElevated), 15, accuracy: 0.001)
+        XCTAssertEqual(sessions.totalMinutes(for: .unsupported), 0, accuracy: 0.001)
+    }
+
+    func testTotalMinutes_allTypes() {
+        let base = Date()
+        let sessions = [
+            makeSession(start: base, minutes: 10, type: .supported),
+            makeSession(start: base, minutes: 20, type: .legsElevated),
+            makeSession(start: base, minutes: 30, type: .unsupported),
+        ]
+        XCTAssertEqual(sessions.totalMinutes, 60, accuracy: 0.001)
+    }
+
+    // MARK: - Rolling 7-day average
+
+    func testRollingAverage_uniformDays() {
+        // 7 days, 60 minutes each → average = 60
+        let today = Calendar.current.startOfDay(for: Date())
+        var sessions: [Session] = []
+        for offset in 0..<7 {
+            let day = Calendar.current.date(byAdding: .day, value: -offset, to: today)!
+            sessions.append(makeSession(start: day, minutes: 60, type: .supported))
+        }
+        XCTAssertEqual(sessions.rollingAverage(days: 7, endingOn: today), 60, accuracy: 0.001)
+    }
+
+    func testRollingAverage_someDaysEmpty() {
+        // Only today has data (60 min), other 6 days are empty → average = 60/7
+        let today = Calendar.current.startOfDay(for: Date())
+        let sessions = [makeSession(start: today, minutes: 60, type: .supported)]
+        XCTAssertEqual(sessions.rollingAverage(days: 7, endingOn: today), 60.0 / 7.0, accuracy: 0.001)
+    }
+
+    func testRollingAverage_sessionOutsideWindow_notCounted() {
+        let today = Calendar.current.startOfDay(for: Date())
+        let eightDaysAgo = Calendar.current.date(byAdding: .day, value: -8, to: today)!
+        let sessions = [makeSession(start: eightDaysAgo, minutes: 120, type: .supported)]
+        XCTAssertEqual(sessions.rollingAverage(days: 7, endingOn: today), 0, accuracy: 0.001)
+    }
+
+    // MARK: - Helpers
+
+    private func makeSession(start: Date, minutes: Double, type: SittingType) -> Session {
+        let s = Session(startTime: start, type: type)
+        s.stopTime = start.addingTimeInterval(minutes * 60)
+        return s
+    }
+}

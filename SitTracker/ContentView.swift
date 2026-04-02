@@ -2,27 +2,45 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Query private var sessions: [Session]
+    @Environment(TimerManager.self) private var timerManager
+    @Query private var allSessions: [Session]
+
+    private var todayCompleted: [Session] {
+        allSessions.sessions(on: Date()).filter { $0.stopTime != nil }
+    }
 
     var body: some View {
+        @Bindable var manager = timerManager
+
         NavigationStack {
-            List {
-                ForEach(SittingType.allCases) { type in
-                    HStack {
-                        Text(type.displayName)
-                        Spacer()
-                        Text("0:00")
-                            .foregroundStyle(.secondary)
-                            .monospacedDigit()
+            List(SittingType.allCases) { type in
+                SessionTimerRow(
+                    type: type,
+                    dailyMinutes: todayCompleted.totalMinutes(for: type),
+                    isActive: timerManager.activeSession?.type == type,
+                    elapsedSeconds: timerManager.activeSession?.type == type ? timerManager.elapsedSeconds : 0
+                ) {
+                    if timerManager.activeSession?.type == type {
+                        timerManager.stopTimer()
+                    } else {
+                        timerManager.startTimer(for: type)
                     }
                 }
             }
             .navigationTitle("Sit Tracker")
         }
+        .sheet(item: $manager.sessionToSave) { session in
+            StopSessionSheet(session: session)
+                .environment(timerManager)
+        }
     }
 }
 
 #Preview {
-    ContentView()
-        .modelContainer(for: Session.self, inMemory: true)
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: Session.self, configurations: config)
+    let manager = TimerManager(modelContext: ModelContext(container))
+    return ContentView()
+        .modelContainer(container)
+        .environment(manager)
 }

@@ -12,7 +12,7 @@ struct SessionTimerRow: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(type.displayName)
                     .font(.headline)
-                Text(dailyMinutes.formattedAsHoursMinutes)
+                Text("\(dailyMinutes.formattedAsHoursMinutes) today")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -31,17 +31,6 @@ struct SessionTimerRow: View {
             .buttonStyle(.plain)
         }
         .padding(.vertical, 6)
-    }
-}
-
-private extension Double {
-    /// Formats a minute count as "Xh Ym" or "Ym today".
-    var formattedAsHoursMinutes: String {
-        let total = Int(self)
-        let h = total / 60
-        let m = total % 60
-        if h > 0 { return "\(h)h \(m)m today" }
-        return "\(m)m today"
     }
 }
 

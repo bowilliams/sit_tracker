@@ -28,6 +28,19 @@ final class Session {
     var isActive: Bool { stopTime == nil }
 }
 
+// MARK: - Formatting
+
+extension Double {
+    /// Formats a minute count as "Xh Ym" or "Ym".
+    var formattedAsHoursMinutes: String {
+        let total = Int(self)
+        let h = total / 60
+        let m = total % 60
+        if h > 0 { return "\(h)h \(m)m" }
+        return "\(m)m"
+    }
+}
+
 // MARK: - Aggregation helpers
 
 extension [Session] {

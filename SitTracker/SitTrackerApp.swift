@@ -4,6 +4,7 @@ import SwiftData
 @main
 struct SitTrackerApp: App {
     let modelContainer: ModelContainer
+    @State private var appSettings = AppSettings()
 
     init() {
         do {
@@ -26,6 +27,7 @@ struct SitTrackerApp: App {
             RootView()
         }
         .modelContainer(modelContainer)
+        .environment(appSettings)
     }
 
     private static var storeURL: URL {

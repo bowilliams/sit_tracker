@@ -42,6 +42,41 @@ final class SessionTests: XCTestCase {
         XCTAssertEqual(sessions.totalMinutes, 60, accuracy: 0.001)
     }
 
+    // MARK: - Quota remaining
+
+    func testQuotaRemaining_underQuota() {
+        let base = Calendar.current.startOfDay(for: Date())
+        let sessions = [makeSession(start: base, minutes: 30, type: .supported)]
+        let quota = 60
+        let remaining = Double(quota) - sessions.totalMinutes
+        XCTAssertEqual(remaining, 30, accuracy: 0.001)
+        XCTAssertGreaterThan(remaining, 0)
+    }
+
+    func testQuotaRemaining_overQuota() {
+        let base = Calendar.current.startOfDay(for: Date())
+        let sessions = [makeSession(start: base, minutes: 75, type: .supported)]
+        let quota = 60
+        let remaining = Double(quota) - sessions.totalMinutes
+        XCTAssertLessThan(remaining, 0, "Negative remaining means over quota")
+        XCTAssertEqual(remaining, -15, accuracy: 0.001)
+    }
+
+    func testQuotaRemaining_exactlyAtQuota() {
+        let base = Calendar.current.startOfDay(for: Date())
+        let sessions = [makeSession(start: base, minutes: 60, type: .supported)]
+        let quota = 60
+        let remaining = Double(quota) - sessions.totalMinutes
+        XCTAssertEqual(remaining, 0, accuracy: 0.001)
+    }
+
+    func testQuotaRemaining_noSessions() {
+        let sessions: [Session] = []
+        let quota = 60
+        let remaining = Double(quota) - sessions.totalMinutes
+        XCTAssertEqual(remaining, 60, accuracy: 0.001)
+    }
+
     // MARK: - Rolling 7-day average
 
     func testRollingAverage_uniformDays() {

@@ -51,9 +51,10 @@ extension [Session] {
     /// Rolling average of daily total minutes over the last `days` days ending on `endDate`.
     func rollingAverage(days: Int = 7, endingOn endDate: Date = Date()) -> Double {
         guard days > 0 else { return 0 }
+        let endOfDay = Calendar.current.startOfDay(for: endDate)
         var total = 0.0
-        for offset in 0..<days {
-            guard let day = Calendar.current.date(byAdding: .day, value: -(days - 1 - offset), to: Calendar.current.startOfDay(for: endDate)) else { continue }
+        for daysAgo in stride(from: days - 1, through: 0, by: -1) {
+            guard let day = Calendar.current.date(byAdding: .day, value: -daysAgo, to: endOfDay) else { continue }
             total += sessions(on: day).totalMinutes
         }
         return total / Double(days)

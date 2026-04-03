@@ -49,6 +49,7 @@ final class TimerManager {
     func saveSession(_ session: Session, startTime: Date, stopTime: Date) {
         session.startTime = startTime
         session.stopTime = stopTime
+        session.date = Calendar.current.startOfDay(for: startTime)
         try? modelContext.save()
         afterSaveOrDiscard()
     }

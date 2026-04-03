@@ -4,8 +4,6 @@ struct SettingsView: View {
     @Environment(AppSettings.self) private var settings
 
     var body: some View {
-        @Bindable var settings = settings
-
         Form {
             Section {
                 Toggle("Enable daily quota", isOn: Binding(
@@ -13,12 +11,23 @@ struct SettingsView: View {
                     set: { settings.dailyQuotaMinutes = $0 ? 60 : 0 }
                 ))
                 if settings.hasQuota {
-                    Stepper(
-                        "\(settings.dailyQuotaMinutes.formattedAsHoursMinutes) per day",
-                        value: $settings.dailyQuotaMinutes,
-                        in: 5...480,
-                        step: 5
-                    )
+                    HStack(spacing: 0) {
+                        Picker("Hours", selection: hoursBinding) {
+                            ForEach(0...8, id: \.self) { h in
+                                Text("\(h)h").tag(h)
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                        .frame(maxWidth: .infinity)
+
+                        Picker("Minutes", selection: minutesBinding) {
+                            ForEach(Array(stride(from: 0, through: 55, by: 5)), id: \.self) { m in
+                                Text("\(m)m").tag(m)
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                        .frame(maxWidth: .infinity)
+                    }
                 }
             } header: {
                 Text("Daily Quota")
@@ -29,10 +38,18 @@ struct SettingsView: View {
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
     }
-}
 
-private extension Int {
-    var formattedAsHoursMinutes: String {
-        Double(self).formattedAsHoursMinutes
+    private var hoursBinding: Binding<Int> {
+        Binding(
+            get: { settings.dailyQuotaMinutes / 60 },
+            set: { settings.dailyQuotaMinutes = $0 * 60 + settings.dailyQuotaMinutes % 60 }
+        )
+    }
+
+    private var minutesBinding: Binding<Int> {
+        Binding(
+            get: { settings.dailyQuotaMinutes % 60 },
+            set: { settings.dailyQuotaMinutes = (settings.dailyQuotaMinutes / 60) * 60 + $0 }
+        )
     }
 }

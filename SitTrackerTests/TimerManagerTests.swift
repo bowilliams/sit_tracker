@@ -17,6 +17,12 @@ final class TimerManagerTests: XCTestCase {
         modelContext = nil
     }
 
+    /// Returns a date on today with the given hour and minute in the current calendar.
+    private func makeDate(hour: Int, minute: Int) -> Date {
+        let today = Calendar.current.startOfDay(for: Date())
+        return Calendar.current.date(bySettingHour: hour, minute: minute, second: 0, of: today)!
+    }
+
     // MARK: - Timer switch flow
 
     func testTimerSwitch_stopsFirstSessionAndShowsSaveSheet() throws {
@@ -60,6 +66,94 @@ final class TimerManagerTests: XCTestCase {
 
         XCTAssertEqual(manager.activeSession?.type, .supported)
         XCTAssertNil(manager.sessionToSave)
+    }
+
+    // MARK: - addManualSession
+
+    func testAddManualSession_savesSessionWithCorrectFields() throws {
+        let manager = TimerManager(modelContext: modelContext)
+        let start = makeDate(hour: 10, minute: 0)
+        let stop = makeDate(hour: 11, minute: 0)
+
+        manager.addManualSession(startTime: start, stopTime: stop, type: .legsElevated)
+
+        let sessions = try modelContext.fetch(FetchDescriptor<Session>())
+        XCTAssertEqual(sessions.count, 1)
+        XCTAssertEqual(sessions[0].startTime, start)
+        XCTAssertEqual(sessions[0].stopTime, stop)
+        XCTAssertEqual(sessions[0].type, .legsElevated)
+        XCTAssertEqual(sessions[0].date, Calendar.current.startOfDay(for: start))
+    }
+
+    func testAddManualSession_replace_deletesExistingAndSavesNew() throws {
+        let manager = TimerManager(modelContext: modelContext)
+
+        // Existing session 10:00–11:00
+        let existing = Session(startTime: makeDate(hour: 10, minute: 0), type: .supported)
+        existing.stopTime = makeDate(hour: 11, minute: 0)
+        modelContext.insert(existing)
+        try modelContext.save()
+
+        // Manual entry 10:30–12:00 replaces the existing one
+        manager.addManualSession(
+            startTime: makeDate(hour: 10, minute: 30),
+            stopTime: makeDate(hour: 12, minute: 0),
+            type: .supported,
+            replacing: [existing]
+        )
+
+        let sessions = try modelContext.fetch(FetchDescriptor<Session>())
+        XCTAssertEqual(sessions.count, 1)
+        XCTAssertEqual(sessions[0].startTime, makeDate(hour: 10, minute: 30))
+    }
+
+    func testAddManualSession_merge_savesUnionOfTimeSpan() throws {
+        let manager = TimerManager(modelContext: modelContext)
+
+        // Existing session 10:00–11:00
+        let existing = Session(startTime: makeDate(hour: 10, minute: 0), type: .supported)
+        existing.stopTime = makeDate(hour: 11, minute: 0)
+        modelContext.insert(existing)
+        try modelContext.save()
+
+        // Manual entry 10:30–12:00 — merge should yield 10:00–12:00
+        let newStart = makeDate(hour: 10, minute: 30)
+        let newStop = makeDate(hour: 12, minute: 0)
+        let mergedStart = ([newStart, existing.startTime]).min()!
+        let mergedStop = ([newStop, existing.stopTime!]).max()!
+
+        manager.addManualSession(
+            startTime: mergedStart,
+            stopTime: mergedStop,
+            type: .supported,
+            replacing: [existing]
+        )
+
+        let sessions = try modelContext.fetch(FetchDescriptor<Session>())
+        XCTAssertEqual(sessions.count, 1)
+        XCTAssertEqual(sessions[0].startTime, makeDate(hour: 10, minute: 0))
+        XCTAssertEqual(sessions[0].stopTime, makeDate(hour: 12, minute: 0))
+    }
+
+    func testAddManualSession_differentType_savesAlongside() throws {
+        let manager = TimerManager(modelContext: modelContext)
+
+        // Existing session of a different type
+        let existing = Session(startTime: makeDate(hour: 10, minute: 0), type: .legsElevated)
+        existing.stopTime = makeDate(hour: 11, minute: 0)
+        modelContext.insert(existing)
+        try modelContext.save()
+
+        // Manual entry overlaps but is a different type — save both, no replacement
+        manager.addManualSession(
+            startTime: makeDate(hour: 10, minute: 30),
+            stopTime: makeDate(hour: 11, minute: 30),
+            type: .supported,
+            replacing: []
+        )
+
+        let sessions = try modelContext.fetch(FetchDescriptor<Session>())
+        XCTAssertEqual(sessions.count, 2)
     }
 
     // MARK: - saveSession updates session.date

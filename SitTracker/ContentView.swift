@@ -4,6 +4,7 @@ import SwiftData
 struct ContentView: View {
     @Environment(TimerManager.self) private var timerManager
     @Query private var allSessions: [Session]
+    @State private var showingManualEntry = false
 
     private var todayCompleted: [Session] {
         allSessions.sessions(on: Date()).filter { $0.stopTime != nil }
@@ -28,6 +29,15 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Sit Tracker")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Add Session") { showingManualEntry = true }
+                }
+            }
+        }
+        .sheet(isPresented: $showingManualEntry) {
+            ManualSessionSheet()
+                .environment(timerManager)
         }
         .sheet(item: $manager.sessionToSave) { session in
             StopSessionSheet(session: session)

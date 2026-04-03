@@ -48,6 +48,14 @@ extension [Session] {
         return filter { $0.date >= start && $0.date < end }
     }
 
+    /// Sessions whose time range overlaps [start, stop). Only completed sessions are considered.
+    func overlapping(start: Date, stop: Date) -> [Session] {
+        filter { session in
+            guard let sessionStop = session.stopTime else { return false }
+            return start < sessionStop && stop > session.startTime
+        }
+    }
+
     /// Rolling average of daily total minutes over the last `days` days ending on `endDate`.
     func rollingAverage(days: Int = 7, endingOn endDate: Date = Date()) -> Double {
         guard days > 0 else { return 0 }

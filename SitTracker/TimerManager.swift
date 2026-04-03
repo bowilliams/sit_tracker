@@ -56,12 +56,7 @@ final class TimerManager {
         afterSaveOrDiscard()
     }
 
-    /// Saves a manually entered session. Pass `replacing` to delete existing sessions
-    /// as part of a Replace or Merge overlap resolution.
-    func addManualSession(startTime: Date, stopTime: Date, type: SittingType, replacing: [Session] = []) {
-        for session in replacing {
-            modelContext.delete(session)
-        }
+    func addManualSession(startTime: Date, stopTime: Date, type: SittingType) {
         let session = Session(startTime: startTime, type: type)
         session.stopTime = stopTime
         modelContext.insert(session)

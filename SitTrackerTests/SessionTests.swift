@@ -69,6 +69,41 @@ final class SessionTests: XCTestCase {
         XCTAssertEqual(sessions.rollingAverage(days: 7, endingOn: today), 0, accuracy: 0.001)
     }
 
+    // MARK: - sessions(on:)
+
+    func testSessionsOnDay_returnsOnlyMatchingDay() {
+        let today = Calendar.current.startOfDay(for: Date())
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)!
+
+        let s1 = makeSession(start: today, minutes: 10, type: .supported)
+        let s2 = makeSession(start: today, minutes: 20, type: .legsElevated)
+        let s3 = makeSession(start: yesterday, minutes: 30, type: .supported)
+
+        let sessions = [s1, s2, s3]
+        XCTAssertEqual(sessions.sessions(on: today).count, 2)
+        XCTAssertEqual(sessions.sessions(on: yesterday).count, 1)
+        XCTAssertEqual(sessions.sessions(on: yesterday).first?.type, .supported)
+    }
+
+    func testSessionsOnDay_emptyForDayWithNoSessions() {
+        let today = Calendar.current.startOfDay(for: Date())
+        let sessions = [makeSession(start: today, minutes: 10, type: .supported)]
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)!
+        XCTAssertTrue(sessions.sessions(on: tomorrow).isEmpty)
+    }
+
+    func testSessionsOnDay_usesStoredDateNotStartTime() {
+        // session.date is set to startOfDay(startTime) at creation; sessions(on:)
+        // filters by session.date, so a session starting near midnight belongs to
+        // the day it started on, not any later day.
+        let today = Calendar.current.startOfDay(for: Date())
+        // 1 second before midnight — still "today"
+        let nearMidnight = Calendar.current.date(byAdding: .second, value: -1, to:
+            Calendar.current.date(byAdding: .day, value: 1, to: today)!)!
+        let s = makeSession(start: nearMidnight, minutes: 5, type: .supported)
+        XCTAssertEqual([s].sessions(on: today).count, 1)
+    }
+
     // MARK: - Helpers
 
     private func makeSession(start: Date, minutes: Double, type: SittingType) -> Session {

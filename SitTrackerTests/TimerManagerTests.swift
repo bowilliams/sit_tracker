@@ -62,6 +62,44 @@ final class TimerManagerTests: XCTestCase {
         XCTAssertNil(manager.sessionToSave)
     }
 
+    // MARK: - saveSession updates session.date
+
+    func testSaveSession_updatesDateWhenStartTimeDayChanges() throws {
+        let manager = TimerManager(modelContext: modelContext)
+
+        // Start and immediately stop a session
+        manager.startTimer(for: .supported)
+        let session = manager.activeSession!
+        manager.stopTimer()
+
+        // Edit start time to a different calendar day
+        let originalDate = session.date
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: session.startTime)!
+        let newStop = yesterday.addingTimeInterval(30 * 60)
+
+        manager.saveSession(session, startTime: yesterday, stopTime: newStop)
+
+        XCTAssertNotEqual(session.date, originalDate)
+        XCTAssertEqual(session.date, Calendar.current.startOfDay(for: yesterday))
+    }
+
+    func testSaveSession_dateUnchangedWhenStartTimeSameDay() throws {
+        let manager = TimerManager(modelContext: modelContext)
+
+        manager.startTimer(for: .supported)
+        let session = manager.activeSession!
+        manager.stopTimer()
+
+        let originalDate = session.date
+        // Adjust start time by a few minutes — same day
+        let adjustedStart = session.startTime.addingTimeInterval(-5 * 60)
+        let adjustedStop = session.stopTime!
+
+        manager.saveSession(session, startTime: adjustedStart, stopTime: adjustedStop)
+
+        XCTAssertEqual(session.date, originalDate)
+    }
+
     // MARK: - Background resume
 
     func testBackgroundResume_restoresActiveSessionWithCorrectElapsed() throws {

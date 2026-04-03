@@ -80,6 +80,10 @@ struct ContentView: View {
     @ViewBuilder
     private var summarySection: some View {
         Section {
+            LabeledContent("Today") {
+                Text(todayTotalMinutes.formattedAsHoursMinutes)
+                    .monospacedDigit()
+            }
             if settings.hasQuota {
                 let remaining = Double(settings.dailyQuotaMinutes) - todayTotalMinutes
                 LabeledContent("Remaining") {
@@ -115,16 +119,6 @@ struct ContentView: View {
                     }
                 }
             }
-            HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("Total")
-                        .font(.headline)
-                    Text("\(todayTotalMinutes.formattedAsHoursMinutes) today")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
-            }
-            .padding(.vertical, 6)
         }
     }
 }

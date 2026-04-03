@@ -33,6 +33,14 @@ struct ContentView: View {
             StopSessionSheet(session: session)
                 .environment(timerManager)
         }
+        .alert("Could not save data", isPresented: Binding(
+            get: { manager.persistenceError != nil },
+            set: { if !$0 { manager.persistenceError = nil } }
+        )) {
+            Button("OK") { manager.persistenceError = nil }
+        } message: {
+            Text(manager.persistenceError?.localizedDescription ?? "")
+        }
     }
 }
 

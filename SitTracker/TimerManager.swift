@@ -10,6 +10,8 @@ final class TimerManager {
 
     // Set to non-nil to present the save/edit sheet; cleared after save or discard.
     var sessionToSave: Session?
+    // Set when a SwiftData save fails; observed by ContentView to show an alert.
+    var persistenceError: Error?
 
     private var pendingStartType: SittingType?
     private let modelContext: ModelContext
@@ -42,7 +44,7 @@ final class TimerManager {
         stopTicking()
         activeSession = nil
         pendingStartType = nextType
-        try? modelContext.save()
+        persist()
         sessionToSave = session
     }
 
@@ -50,13 +52,13 @@ final class TimerManager {
         session.startTime = startTime
         session.stopTime = stopTime
         session.date = Calendar.current.startOfDay(for: startTime)
-        try? modelContext.save()
+        persist()
         afterSaveOrDiscard()
     }
 
     func discardSession(_ session: Session) {
         modelContext.delete(session)
-        try? modelContext.save()
+        persist()
         afterSaveOrDiscard()
     }
 
@@ -73,9 +75,17 @@ final class TimerManager {
     private func beginSession(type: SittingType) {
         let session = Session(startTime: Date(), type: type)
         modelContext.insert(session)
-        try? modelContext.save()
+        persist()
         activeSession = session
         startTicking()
+    }
+
+    private func persist() {
+        do {
+            try modelContext.save()
+        } catch {
+            persistenceError = error
+        }
     }
 
     private func restoreActiveSession() {

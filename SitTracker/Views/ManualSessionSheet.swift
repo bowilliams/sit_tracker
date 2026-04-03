@@ -39,6 +39,11 @@ struct ManualSessionSheet: View {
             }
             .navigationTitle("Add Session")
             .navigationBarTitleDisplayMode(.inline)
+            .onChange(of: editedStart) { oldStart, newStart in
+                // Keep the same duration when the start date/time changes.
+                let duration = editedStop.timeIntervalSince(oldStart)
+                editedStop = newStart.addingTimeInterval(duration)
+            }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") { dismiss() }

@@ -1,6 +1,6 @@
 name: SitTracker
 options:
-  bundleIdPrefix: com.sittracker
+  bundleIdPrefix: com.fatbyrd
   deploymentTarget:
     iOS: "17.0"
   xcodeVersion: "16.0"
@@ -43,7 +43,7 @@ targets:
           UIApplicationSupportsMultipleScenes: false
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.sittracker.SitTracker
+        PRODUCT_BUNDLE_IDENTIFIER: com.fatbyrd.sittracker
         INFOPLIST_FILE: SitTracker/Info.plist
         DEVELOPMENT_TEAM: ""
 
@@ -56,5 +56,5 @@ targets:
       - target: SitTracker
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.sittracker.SitTrackerTests
+        PRODUCT_BUNDLE_IDENTIFIER: com.fatbyrd.sittracker.tests
         GENERATE_INFOPLIST_FILE: YES

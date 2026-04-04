@@ -34,8 +34,9 @@ struct ContentView: View {
 
         NavigationStack {
             List {
-                summarySection
+                todaySection
                 timerSection
+                progressSection
             }
             .navigationTitle("Sit Tracker")
             .toolbar {
@@ -78,9 +79,9 @@ struct ContentView: View {
     // MARK: - Sections
 
     @ViewBuilder
-    private var summarySection: some View {
+    private var todaySection: some View {
         Section {
-            LabeledContent("Today") {
+            LabeledContent("Total") {
                 Text(todayTotalMinutes.formattedAsHoursMinutes)
                     .monospacedDigit()
             }
@@ -94,6 +95,12 @@ struct ContentView: View {
                         .foregroundStyle(remaining < 0 ? .orange : .primary)
                 }
             }
+        }
+    }
+
+    @ViewBuilder
+    private var progressSection: some View {
+        Section {
             LabeledContent("7-day avg") {
                 Text("\(sevenDayAverage.formattedAsHoursMinutes)/day")
                     .monospacedDigit()

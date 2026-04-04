@@ -46,6 +46,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.fatbyrd.sittracker
         INFOPLIST_FILE: SitTracker/Info.plist
         DEVELOPMENT_TEAM: ""
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
 
   SitTrackerTests:
     type: bundle.unit-test

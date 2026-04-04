@@ -1,7 +1,13 @@
 import SwiftUI
+import SwiftData
 
 struct SettingsView: View {
     @Environment(AppSettings.self) private var settings
+    @Query private var allSessions: [Session]
+
+    private var csvDocument: CSVDocument {
+        CSVDocument(csv: CSVGenerator.generate(from: allSessions))
+    }
 
     var body: some View {
         Form {
@@ -33,6 +39,13 @@ struct SettingsView: View {
                 Text("Daily Quota")
             } footer: {
                 Text("When set, the main screen shows how much sitting time you have remaining today.")
+            }
+            Section {
+                ShareLink(item: csvDocument, preview: SharePreview("sit_tracker_export.csv"))
+            } header: {
+                Text("Export")
+            } footer: {
+                Text("Share all completed sessions as a CSV file.")
             }
         }
         .navigationTitle("Settings")

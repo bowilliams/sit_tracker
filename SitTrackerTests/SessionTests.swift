@@ -12,10 +12,10 @@ final class SessionTests: XCTestCase {
         XCTAssertEqual(session.durationMinutes, 90, accuracy: 0.001)
     }
 
-    func testDurationMinutes_activeSession_isApproximatelyZero() {
+    func testDurationMinutes_activeSession_isAtMostOneMinute() {
         let session = Session(startTime: Date(), type: .supported)
-        // Active session uses Date() internally; duration should be near zero immediately after creation
-        XCTAssertLessThan(session.durationMinutes, 0.1)
+        // Active session uses Date() internally; duration rounds up to 1 minute immediately after creation
+        XCTAssertEqual(session.durationMinutes, 1, accuracy: 0.001)
     }
 
     // MARK: - Daily total per type

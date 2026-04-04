@@ -22,7 +22,7 @@ final class Session {
 
     var durationMinutes: Double {
         let end = stopTime ?? Date()
-        return end.timeIntervalSince(startTime) / 60
+        return ceil(end.timeIntervalSince(startTime) / 60)
     }
 
     var isActive: Bool { stopTime == nil }

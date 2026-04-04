@@ -28,7 +28,7 @@ enum CSVGenerator {
             let date = dateFormatter.string(from: session.startTime)
             let start = timeFormatter.string(from: session.startTime)
             let stopStr = timeFormatter.string(from: stop)
-            let minutes = String(format: "%.1f", session.durationMinutes)
+            let minutes = String(format: "%.0f", session.durationMinutes)
             let type = escape(session.type.rawValue)
             rows.append("\(date),\(start),\(stopStr),\(type),\(minutes)")
         }

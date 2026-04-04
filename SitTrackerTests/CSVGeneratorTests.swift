@@ -42,8 +42,8 @@ final class CSVGeneratorTests: XCTestCase {
         XCTAssertTrue(row.hasPrefix("2026-03-01,"), "Expected date 2026-03-01, got: \(row)")
         // type column
         XCTAssertTrue(row.contains(",supported,"), "Expected type 'supported', got: \(row)")
-        // minutes column (30.0)
-        XCTAssertTrue(row.hasSuffix(",30.0"), "Expected minutes 30.0, got: \(row)")
+        // minutes column (30)
+        XCTAssertTrue(row.hasSuffix(",30"), "Expected minutes 30, got: \(row)")
     }
 
     // MARK: - Active sessions excluded

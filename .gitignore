@@ -11,8 +11,5 @@ DerivedData/
 *.xcscmblueprint
 build/
 
-# Generated — recreate with `xcodegen generate`
-SitTracker.xcodeproj/
-
 # macOS
 .DS_Store

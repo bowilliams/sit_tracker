@@ -1,0 +1,477 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03CCAC6F09CA661922AC34A7 /* SitTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8726C331AA43DE0A2600B3D8 /* SitTrackerApp.swift */; };
+		1B987AF95D6E9E73C2F46CF6 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B8B6FDD593DE8E275F028C /* Session.swift */; };
+		37B31605A37618D3A193AA29 /* TimerManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810137A74554AEE2205CEA3F /* TimerManagerTests.swift */; };
+		48619FBCB800426DC724FAA9 /* SittingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9229481D72A4753295C8FB /* SittingType.swift */; };
+		5FF0C6200BE5895EFDF41242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16B0A185BE1AF47C6A2213DB /* Assets.xcassets */; };
+		75318A6527C0250A93560C2A /* CSVGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D1E5060F9E92A482BB7E2D /* CSVGeneratorTests.swift */; };
+		7E0B104168D677F254B6E178 /* CSVGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A81DF03239D8699AE20F1D /* CSVGenerator.swift */; };
+		7FFFACC29ED184414BB36638 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D911D8949550C792A82313D2 /* SettingsView.swift */; };
+		8F0692B522DF3DD92A3CC48E /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37378699D6EA58AE0CFC97 /* AppSettings.swift */; };
+		99A87FE202FB5B98F43230B5 /* StopSessionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32E8EC08785BBE7DE8641A /* StopSessionSheet.swift */; };
+		A83122A9636D69C86A54F4FE /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6491F69E32602D3ADBD6FEF2 /* TimerManager.swift */; };
+		B50AE585388219CC019F1F89 /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C501E7FCDC3D6DD4BC00DE9B /* SessionTests.swift */; };
+		B5DC16A18A4A83ECC2CC0C27 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C10788F2A0B86933C8D30E3 /* ContentView.swift */; };
+		B68C1E0A283D13361C8B23C2 /* SessionTimerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322A66B057620FF0D0AFE3D /* SessionTimerRow.swift */; };
+		E23D8CF547908029B30613AF /* HowImDoingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D63F8993ACAA9EABD3D34DA /* HowImDoingView.swift */; };
+		E323EB2A205B0FDDE13EB7BB /* ManualSessionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C2946000BCCAEDDCD58D8 /* ManualSessionSheet.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		101B9F68BF8A661B965893F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 781F83FDE4C455608865395D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E885A62B4E5B59ED33CCAC06;
+			remoteInfo = SitTracker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D32E8EC08785BBE7DE8641A /* StopSessionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSessionSheet.swift; sourceTree = "<group>"; };
+		161B0C28D5425D184B15B744 /* SitTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SitTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		16B0A185BE1AF47C6A2213DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		36D1E5060F9E92A482BB7E2D /* CSVGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVGeneratorTests.swift; sourceTree = "<group>"; };
+		44A81DF03239D8699AE20F1D /* CSVGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVGenerator.swift; sourceTree = "<group>"; };
+		5D63F8993ACAA9EABD3D34DA /* HowImDoingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowImDoingView.swift; sourceTree = "<group>"; };
+		6491F69E32602D3ADBD6FEF2 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		69B8B6FDD593DE8E275F028C /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		6CCF3C656DE5AEED3A384E3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		810137A74554AEE2205CEA3F /* TimerManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManagerTests.swift; sourceTree = "<group>"; };
+		8726C331AA43DE0A2600B3D8 /* SitTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SitTrackerApp.swift; sourceTree = "<group>"; };
+		8C10788F2A0B86933C8D30E3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A15C2946000BCCAEDDCD58D8 /* ManualSessionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualSessionSheet.swift; sourceTree = "<group>"; };
+		C322A66B057620FF0D0AFE3D /* SessionTimerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTimerRow.swift; sourceTree = "<group>"; };
+		C501E7FCDC3D6DD4BC00DE9B /* SessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTests.swift; sourceTree = "<group>"; };
+		CAFFCA428EA45410469FAE81 /* SitTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SitTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB37378699D6EA58AE0CFC97 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		D911D8949550C792A82313D2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		EA9229481D72A4753295C8FB /* SittingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SittingType.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		55028C188FBD558D5BE7242A /* SitTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				36D1E5060F9E92A482BB7E2D /* CSVGeneratorTests.swift */,
+				C501E7FCDC3D6DD4BC00DE9B /* SessionTests.swift */,
+				810137A74554AEE2205CEA3F /* TimerManagerTests.swift */,
+			);
+			path = SitTrackerTests;
+			sourceTree = "<group>";
+		};
+		565B02D9F1DC7585A3EDDF95 /* SitTracker */ = {
+			isa = PBXGroup;
+			children = (
+				CB37378699D6EA58AE0CFC97 /* AppSettings.swift */,
+				16B0A185BE1AF47C6A2213DB /* Assets.xcassets */,
+				8C10788F2A0B86933C8D30E3 /* ContentView.swift */,
+				44A81DF03239D8699AE20F1D /* CSVGenerator.swift */,
+				6CCF3C656DE5AEED3A384E3C /* Info.plist */,
+				8726C331AA43DE0A2600B3D8 /* SitTrackerApp.swift */,
+				6491F69E32602D3ADBD6FEF2 /* TimerManager.swift */,
+				75555732BBBEEE6A6589F257 /* Models */,
+				7542779197FC687D068F63FD /* Views */,
+			);
+			path = SitTracker;
+			sourceTree = "<group>";
+		};
+		7542779197FC687D068F63FD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5D63F8993ACAA9EABD3D34DA /* HowImDoingView.swift */,
+				A15C2946000BCCAEDDCD58D8 /* ManualSessionSheet.swift */,
+				C322A66B057620FF0D0AFE3D /* SessionTimerRow.swift */,
+				D911D8949550C792A82313D2 /* SettingsView.swift */,
+				0D32E8EC08785BBE7DE8641A /* StopSessionSheet.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		75555732BBBEEE6A6589F257 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				69B8B6FDD593DE8E275F028C /* Session.swift */,
+				EA9229481D72A4753295C8FB /* SittingType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7BCDBC17537B6FA3F6914EE5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CAFFCA428EA45410469FAE81 /* SitTracker.app */,
+				161B0C28D5425D184B15B744 /* SitTrackerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		867170D19B46FB9F96449AF2 = {
+			isa = PBXGroup;
+			children = (
+				565B02D9F1DC7585A3EDDF95 /* SitTracker */,
+				55028C188FBD558D5BE7242A /* SitTrackerTests */,
+				7BCDBC17537B6FA3F6914EE5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E7913BBD30225B501F8171A1 /* SitTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56BE5FE3F7B5D03F9026965A /* Build configuration list for PBXNativeTarget "SitTrackerTests" */;
+			buildPhases = (
+				2A6B277F4BD53875DAC1DBE8 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FEE0F16DC7C8F78B0841B1C0 /* PBXTargetDependency */,
+			);
+			name = SitTrackerTests;
+			packageProductDependencies = (
+			);
+			productName = SitTrackerTests;
+			productReference = 161B0C28D5425D184B15B744 /* SitTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E885A62B4E5B59ED33CCAC06 /* SitTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16C05A84893DABA04612E60B /* Build configuration list for PBXNativeTarget "SitTracker" */;
+			buildPhases = (
+				B2E06163E06595F887F78B1E /* Sources */,
+				9E2A120A8205305AF1401B1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SitTracker;
+			packageProductDependencies = (
+			);
+			productName = SitTracker;
+			productReference = CAFFCA428EA45410469FAE81 /* SitTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		781F83FDE4C455608865395D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2640;
+				TargetAttributes = {
+					E885A62B4E5B59ED33CCAC06 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = 8BE2E8BEB3C2880B8C8F0DA9 /* Build configuration list for PBXProject "SitTracker" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 867170D19B46FB9F96449AF2;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 7BCDBC17537B6FA3F6914EE5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E885A62B4E5B59ED33CCAC06 /* SitTracker */,
+				E7913BBD30225B501F8171A1 /* SitTrackerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9E2A120A8205305AF1401B1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FF0C6200BE5895EFDF41242 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2A6B277F4BD53875DAC1DBE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75318A6527C0250A93560C2A /* CSVGeneratorTests.swift in Sources */,
+				B50AE585388219CC019F1F89 /* SessionTests.swift in Sources */,
+				37B31605A37618D3A193AA29 /* TimerManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2E06163E06595F887F78B1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F0692B522DF3DD92A3CC48E /* AppSettings.swift in Sources */,
+				7E0B104168D677F254B6E178 /* CSVGenerator.swift in Sources */,
+				B5DC16A18A4A83ECC2CC0C27 /* ContentView.swift in Sources */,
+				E23D8CF547908029B30613AF /* HowImDoingView.swift in Sources */,
+				E323EB2A205B0FDDE13EB7BB /* ManualSessionSheet.swift in Sources */,
+				1B987AF95D6E9E73C2F46CF6 /* Session.swift in Sources */,
+				B68C1E0A283D13361C8B23C2 /* SessionTimerRow.swift in Sources */,
+				7FFFACC29ED184414BB36638 /* SettingsView.swift in Sources */,
+				03CCAC6F09CA661922AC34A7 /* SitTrackerApp.swift in Sources */,
+				48619FBCB800426DC724FAA9 /* SittingType.swift in Sources */,
+				99A87FE202FB5B98F43230B5 /* StopSessionSheet.swift in Sources */,
+				A83122A9636D69C86A54F4FE /* TimerManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FEE0F16DC7C8F78B0841B1C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E885A62B4E5B59ED33CCAC06 /* SitTracker */;
+			targetProxy = 101B9F68BF8A661B965893F9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4678C73749D19B1B282D255A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		814530791662B2F4C9066746 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fatbyrd.sittracker.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SitTracker.app/SitTracker";
+			};
+			name = Debug;
+		};
+		8799947CA686A68F95034ECF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fatbyrd.sittracker.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SitTracker.app/SitTracker";
+			};
+			name = Release;
+		};
+		8E0FCF16F0725CD48FC828FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		AA93D74C472AAA5FF81F6887 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = GZHQ77GKZT;
+				INFOPLIST_FILE = SitTracker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fatbyrd.sittracker;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CCBE136A8C381E14E73548CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = GZHQ77GKZT;
+				INFOPLIST_FILE = SitTracker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fatbyrd.sittracker;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		16C05A84893DABA04612E60B /* Build configuration list for PBXNativeTarget "SitTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA93D74C472AAA5FF81F6887 /* Debug */,
+				CCBE136A8C381E14E73548CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		56BE5FE3F7B5D03F9026965A /* Build configuration list for PBXNativeTarget "SitTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				814530791662B2F4C9066746 /* Debug */,
+				8799947CA686A68F95034ECF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8BE2E8BEB3C2880B8C8F0DA9 /* Build configuration list for PBXProject "SitTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4678C73749D19B1B282D255A /* Debug */,
+				8E0FCF16F0725CD48FC828FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 781F83FDE4C455608865395D /* Project object */;
+}
